@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="board/fragments/header :: main-head"> </head>
+	<body th:replace="board/fragments/body :: main-body"> </body>
+<style>
+
+
+.title1 {
+	width: 150px;
+	height: 25px;
+	background-color: black;
+	font-size: 20px;
+	font-family: "G마켓 산스 TTF";
+	text-align: center;
+	margin-left: 400px;
+	color: white;
+}
+
+.gr {
+	width: 150px;
+	height: 25px;
+	background-color: black;
+	font-size: 20px;
+	font-family: "G마켓 산스 TTF";
+	text-align: center;
+	margin-left: 400px;
+	color: white;
+	margin-top: 100px;
+}
+
+.im {
+	width: 150px;
+	height: 25px;
+	background-color: black;
+	font-size: 20px;
+	font-family: "G마켓 산스 TTF";
+	text-align: center;
+	margin-left: 400px;
+	color: white;
+	margin-top: 100px;
+}
+
+
+.pf {
+	width: 200px;
+	height: 25px;
+	background-color: black;
+	font-size: 20px;
+	font-family: "G마켓 산스 TTF";
+	text-align: center;
+	margin-left: 400px;
+	color: white;
+	margin-top: 100px;
+}
+
+.grade {
+	width: 1400px;
+	background-color: #fbfbfb;
+	margin-left: 300px;
+	padding: 20px 0 20px 0;
+	border-radius: 10px;
+}
+
+.important {
+	
+	width: 1400px;
+	background-color: #fbfbfb;
+	margin-left: 300px;
+	padding: 20px 0 20px 0;
+	border-radius: 10px;
+}
+
+.projectFile {
+
+	width: 1400px;
+	background-color: #fbfbfb;
+	margin-left: 300px;
+	padding: 20px 0 20px 0;
+	border-radius: 10px;
+	height: 500px;
+}
+
+.resume_photo {
+    position: absolute;
+    top: 600px;
+    right: 400px;
+    padding: 9px;
+    width: 120px;
+    height: 160px;
+    border: 1px solid #e9e9e9;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#sb {
+	background-color: #a4c639;
+	border-color: #a4c639;
+	width: 70px;
+	height: 40px;
+	font-size: 13px;
+	font-family: "G마켓 산스 TTF";
+}
+
+/* #btnDiv {
+	margin-left: 1700px;
+} */
+
+.t1 {
+	text-align: center;
+	font-family: "G마켓 산스 TTF";
+}
+
+.t2 {
+	border: 1px solid black;
+	width: 1800px;
+	opacity: 0.3;
+	margin: 45px;
+	bottom: 150px;
+}
+
+.t3 {
+	margin-left: 400px;
+	font-size: 25px;
+	font-family: "G마켓 산스 TTF";
+}
+
+.ractangle {
+	width: 100px;
+	height: 40px;
+	border: 1px solid black;
+	color: white;
+	background: black;
+	text-align: center;
+	padding-top: 7px;
+	font-size: 20px;
+	font-family: "G마켓 산스 TTF";
+	margin-left: 1750px;
+	bottom: 300px;
+}
+
+#l1 {
+	font-family: "G마켓 산스 TTF";
+	font-size: 18px;
+	text-align: right;
+	margin-left: 170px;
+	padding-bottom: 5px;	
+}
+
+#l2 {
+	margin-top: 5px;
+	width: 500px;
+	height: 50px;
+}
+
+#l3 {
+	margin-top: 5px;
+	width: 500px;
+	height: 162px;
+}
+
+#l4 {
+	margin-top: 5px;
+	width: 150px;
+	height: 30px;
+}
+
+#l5 {
+	margin-top: 5px;
+	width: 300px;
+	height: 30px;
+	
+}
+
+#l6 {
+	margin-top: 5px;
+	width: 500px;
+	height: 30px;
+}
+
+#l7 {
+	margin-top: 5px;
+	width: 500px;
+	height: 30px;
+}
+
+
+
+.back1 {
+	background-color: white;
+}
+
+#fi {
+	text-align: left;
+}
+
+#bac {
+	width: 70px;
+	height: 40px;
+	font-size: 13px;
+	font-family: "G마켓 산스 TTF";
+	background-color: white;
+	padding: 10px;
+	margin-right: 320px;
+}
+
+.jb {
+	width: 500px;
+	height: 700px;
+	background-color: #f5f7fa;
+	position: absolute;
+	margin-left: 1260px;
+	margin-top: 10px;
+}
+
+#btnDiv {
+	left: 200px;
+}
+
+.cheese {
+	position: absolute;
+	margin-left: 1150px;
+	margin-top: 250px;
+}
+
+#cheese1 {
+	width: 350px;
+	height: 600px;
+	border-radius: 5px;
+	
+}
+
+.saf {
+	margin-top: 100px;
+	margin-left: 1280px;
+}
+
+.Con {
+	border: 1px solid black;
+	width: 1400px;
+}
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="TemplateMo">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+	rel="stylesheet">
+
+<title>Ourd Business - Services</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="../assets/css/fontawesome.css">
+<link rel="stylesheet" href="../assets/css/templatemo-finance-business.css">
+<link rel="stylesheet" href="../assets/css/owl.css">
+<!--
+
+Finance Business TemplateMo
+
+https://templatemo.com/tm-545-finance-business
+
+-->
+</head>
+
+<body>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
+
+	<!-- Header -->
+
+	     <header class="">
+      <nav class="navbar navbar-expand-lg">
+         <div class="container">
+            <a class="navbar-brand" href="home"><h2>OURD
+                  Business</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+               data-target="#navbarResponsive" aria-controls="navbarResponsive"
+               aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active"><a class="nav-link" href="home">Home
+                        <span class="sr-only">(current)</span>
+                  </a></li>
+                  <li class="nav-item"><a class="nav-link"
+                  sec:authorize="!isAuthenticated()" th:href="@{login}">Sign Up</a></li>
+                  <li class="nav-item"><a class="nav-link" href="board/list.do">Board
+                        </a></li>
+                     <li class="nav-item"><a class="nav-link" href="/chat/room" 
+                  onclick="window.open(this.href, '_blank', 'width=460px,height=420px,left=2000%, top=500px,toolbars=no,scrollbars=no'); return false;">
+                        Chat</a></li>
+                    
+                  <li class="nav-item"><a class="nav-link" href="board" sec:authorize="isAuthenticated()" sec:authentication="name"></a></li>
+                    <form class="nav-item" th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+                  <li class="nav-item"><a class="nav-link" href="board" th:href="@{'/logout'}">
+                        <button class="btn btn-outline-success" type="submit">logout</button></a></li>
+                  </form>
+               </ul>
+            </div>
+         </div>
+      </nav>
+   </header>
+
+	<!-- Page Content -->
+	<div class="page-heading header-text">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>>TIP BOARD</h1>
+					<span>WITH. OURD</span>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <!-- S Write.do page -->
+    <div class="back1">
+<br><br><br>
+<!-- <h1 class="t1">이력서를 작성해 주세요</h1>
+<div class="t2"></div> -->
+<div class="backg">
+<h2 class="t3">ALLOW ME TO INTRODUCE MYSELF</h2> 		
+		
+<br>
+	<div class="title1">기본 사항</div>
+<br>
+	<div class="cheese"> <img alt="" src="../img/지도.jpg" id="cheese1"> </div>
+
+	<th:block layout:fragment="title">
+		<title>thiThe page is a write page</title>
+	</th:block>
+
+	<th:block layout:fragment="content">
+		<div class="card-content" id="back">
+			<form class="form-horizontal" th:action="@{/board/register.do}" th:object="${board}" method="post" enctype="multipart/form-data" onsubmit="return registerBoard(this)">
+				<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+				<input type="hidden" th:if="*{idx != null and idx > 0}" th:field="*{idx}" />
+				<!--/* 파일이 변경된 경우, 해당 파라미터를 이용하여 파일 삭제 및 재등록 처리 */-->
+				<input type="hidden" th:field="*{changeYn}" value="N" />
+
+				
+
+<!--  				<div class="form-group">
+					<label for="noticeYn" class="col-sm-2 control-label">비공개</label>
+					<div class="col-sm-10" style="margin-top: 10px;">
+						<input type="checkbox" th:value="*{noticeYn}" id="noticeYn" name="noticeYn" th:checked="*{#strings.equals( noticeYn, 'Y' )}" />
+					</div>
+				</div> -->
+
+				
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label" id="l1">제목</label>
+					<div class="col-sm-5" id="l2">
+							<input id="l2" type="text" th:field="*{title}" class="form-control" placeholder="제목을 입력해 주세요." />
+							<input type="hidden" th:value="${nickname}" id="username" name="username"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="title" class="col-sm-2 control-label" id="l1">내용</label>
+					<div class="col-sm-5">
+						<input id="l3" type="text" th:field="*{content}" class="form-control" placeholder=" " />
+					</div>
+				</div>							
+				
+
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">이름</label>
+					<div class="col-sm-5">
+						<input id="l4" type="text" th:field="*{writer}" class="form-control" placeholder="이름을 입력해 주세요." />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">생년월일</label>
+					<div class="col-sm-5">
+						<input id="l4" type="text" th:field="*{birthday}" class="form-control" placeholder="YYYYMMDD" onkeypress="onlyNumber();"/>
+						&nbsp;<span id="errmsg"></span>
+					</div>
+				</div>
+			
+ 			<!-- 이메일 칸 -->	
+		     	<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">이메일</label>
+					<div class="col-sm-5">
+						<input id="l5" type="text" th:field="*{email}" class="form-control" placeholder="sea3910@gmail.com" />
+					</div>
+				</div>
+				
+				<div class="resume_photo">
+            <a href="##" class="box_photo" data-api_type="layer" data-api_id="basic_photo">
+                <span>사진추가</span>            </a>
+            <a class="photo_delete" href="##" style="display:none;"><span class="blind">사진 삭제</span></a>
+        </div>
+        
+<div class="gr">학력 사항</div><br>			
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">고등학교</label>
+					<div class="col-sm-5">
+						<input id="l6" type="text" th:field="*{grade}" class="form-control" placeholder="고등학교 입력" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">대학교</label>
+					<div class="col-sm-5">
+						<input id="l6" type="text" th:field="*{gradeup}" class="form-control" placeholder="대학교 입력" />
+					
+					</div>
+				</div>
+
+		<div class="im">핵심 역량</div>
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">스킬</label>
+					<div class="col-sm-5">
+						<input id="l7" type="text" th:field="*{skills}" class="form-control" placeholder="배운 기술" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label" id="l1">깃허브</label>
+					<div class="col-sm-5">
+						<input id="l7" type="text" th:field="*{git}" class="form-control" placeholder="www.github.com" />
+					
+					</div>
+				</div> 
+			</div>
+			
+<div class="pf">프로젝트 파일 등록</div>
+<br>
+				<!--/* 저장된 파일이 없는 파일 영역 */-->
+				<div th:if="${#lists.isEmpty( fileList )}" data-name="fileDiv" class="form-group filebox bs3-primary">
+					<label for="file_0" class="col-sm-2 control-label" id="l1">파일</label>
+					<div class="col-sm-5">
+						<input type="text" class="upload-name" value="파일 찾기" readonly />
+						<label for="file_0" class="control-label">찾아보기</label>
+						<input type="file" name="files" id="file_0" class="upload-hidden" onchange="changeFilename(this)" />
+					
+						<button type="button" onclick="addFile()" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+						<button type="button" onclick="removeFile(this)" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
+							<i class="fa fa-minus" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+				
+				<!--/* 저장된 파일이 있는 파일 영역 */-->
+				<div th:unless="${#lists.isEmpty( fileList )}" th:each="row, status : ${fileList}" data-name="fileDiv" class="form-group filebox bs3-primary">
+					<label th:for="|file_${status.index}|" class="col-sm-2 control-label" >[[ |파일${status.count}| ]]</label>
+					<div class="col-sm-5">
+						<input type="hidden" name="fileIdxs" th:value="${row.idx}" />
+						<input type="text" class="upload-name" th:value="${row.originalName}" readonly />
+						<label th:for="|file_${status.index}|" class="control-label">찾아보기</label>
+						<input type="file" name="files" th:id="|file_${status.index}|" class="upload-hidden" onchange="changeFilename(this)" />
+					
+						<button th:if="${status.first}" type="button" onclick="addFile()" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+						<button type="button" onclick="removeFile(this)" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
+							<i class="fa fa-minus" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+		<br>
+
+				<div id="btnDiv" class="btn_wrap text-center" th:object="${params}">
+					<div class="saf">
+						<button type="submit" class="btn btn-primary waves-effect waves-light" id="sb">저장하기</button>
+						<a th:href="|@{/board/list.do}*{makeQueryString(currentPageNo)}|" class="btn btn-default waves-effect waves-light" id="bac">뒤로가기</a>
+					</div>
+				</div>
+			</form>
+		<br>
+		<!-- /.card-content -->
+	</th:block>
+<!-- E Write.do page -->
+</div>
+</div>
+<!-- Write.do SCRIPT -->
+
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+
+			function registerBoard(form) {
+
+				form.noticeYn.value = form.noticeYn.checked == false ? 'N' : 'Y';
+				form.secretYn.value = form.secretYn.checked == false ? 'N' : 'Y';
+
+				var result = (
+						   isValid(form.title, "제목", null, null)
+						&& isValid(form.writer, "이름", null, null)
+				);
+			
+				if ( result == false ) {
+					return false;
+				}
+
+				var idx = /*[[ ${board.idx} ]]*/;
+				if (isEmpty(idx) == false) {
+					var queryString = /*[[ ${params.makeQueryString(params.currentPageNo)} ]]*/;
+			
+					/*[- 쿼리 스트링을 오브젝트 형태로 변환 -]*/
+					queryString = new URLSearchParams(queryString);
+					queryString.forEach(function(value, key) {
+						if (isEmpty(value) == false) {
+							$(form).append('<input type="hidden" name="' + key + '" value="' + value + '" />');
+						}
+					});
+				}
+			}
+			/*[- end of function -]*/
+
+			const fileList = /*[[ ${fileList} ]]*/; /*[- 업로드 파일 리스트 -]*/
+			let fileIdx = isEmpty(fileList) ? 0 : fileList.length; /*[- 파일 인덱스 처리용 전역 변수 -]*/
+
+			function addFile() {
+			
+				const fileDivs = $('div[data-name="fileDiv"]');
+				if (fileDivs.length > 2) {
+					alert('파일은 최대 세 개까지 업로드 할 수 있습니다.');
+					return false;
+				}
+			
+				fileIdx++;
+			
+				const fileHtml = `
+					<div data-name="fileDiv" class="form-group filebox bs3-primary">
+						<label for="file_${fileIdx}" class="col-sm-2 control-label"></label>
+						<div class="col-sm-5">
+							<input type="text" class="upload-name" value="파일 찾기" readonly />
+							<label for="file_${fileIdx}" class="control-label">찾아보기</label>
+							<input type="file" name="files" id="file_${fileIdx}" class="upload-hidden" onchange="changeFilename(this)" />
+			
+							<button type="button" onclick="removeFile(this)" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
+								<i class="fa fa-minus" aria-hidden="true"></i>
+							</button>
+						</div>
+					</div>
+				`;
+			
+				$('#btnDiv').before(fileHtml);
+			}
+
+			/*[- end of function -]*/
+			
+			function removeFile(elem) {
+
+				document.getElementById('changeYn').value = 'Y';
+			
+				const prevTag = $(elem).prev().prop('tagName');
+				if (prevTag === 'BUTTON') {
+					const file = $(elem).prevAll('input[type="file"]');
+					const filename = $(elem).prevAll('input[type="text"]');
+					file.val('');
+					filename.val('파일 찾기');
+			
+					$(elem).prevAll('input[name="fileIdxs"]').remove();
+					return false;
+				}
+			
+				const target = $(elem).parents('div[data-name="fileDiv"]');
+				target.remove();
+			}
+			/*[- end of function -]*/
+
+			function changeFilename(file) {
+
+				document.getElementById('changeYn').value = 'Y';
+			
+				file = $(file);
+				const filename = file[0].files[0].name;
+				const target = file.prevAll('input.upload-name');
+				target.val(filename);
+
+				file.prevAll('input[name="fileIdxs"]').remove();
+			}
+			/*[- end of function -]*/
+
+			/*]]>*/
+
+			function onlyNumber(this){
+				$("#l4").keypress(function (e) {
+					if (e.which != 8 && e.which != 0 (e.which < 48 || e.which > 57)){
+						$("#errmsg").html("Digits Only").show().fadeOut("slow");
+			               return false;
+					}
+				});
+		</script>
+	</th:block>
+</html>
+
+<!-- Write.do SCRIPT -->
+</div>
+    <!-- Footer Starts Here -->
+	   <footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 footer-item">
+					<h4>OurD 소개</h4>
+					<p><strong>Our Dream</strong>
+					<br>
+						우리들의 꿈이 이루어지는  <br>
+						그날까지 함께하겠습니다. <br>
+						We will be together until our dreams come true.<br>
+						ABOUT OurD</p>
+				</div>
+				<div class="col-md-3 footer-item">
+					<h4>고객 센터</h4> 
+						<p>
+						(주)Our Dream | 서울 강남구 테헤란로 <br>
+						고객센터 전화문의 | 010-0000-0000 <br>
+						FAX | 02-0000-0000  <br>
+						E-mail ourD@naver.com <br>
+						</p>
+				</div>
+				<div class="col-md-3 footer-item">
+					<h4>Additional Pages</h4>
+					<ul class="menu-list">
+						<li><a href="#">About Us 회사소개 바로가기</a></li>
+						<li><a href="#">포트폴리오 바로가기</a></li>
+						<li><a href="#">팁 게시판 바로가기</a></li>
+						<li><a href="#">채팅방 바로가기</a></li>
+						<li><a href="#">Home 바로가기</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 footer-item last-item">
+					<h4>채팅방 바로가기</h4>
+					<div class="contact-form">
+
+								<div class="col-lg-12">
+								<a href="/chat/room" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,left=2000%, top=500px,toolbars=no,scrollbars=no'); return false;">
+								<!-- 
+									<a href="/chat/room" target='_blank'> -->
+										<fieldset>
+												<button value="채팅방으로이동" type="submit" id="ChatGo" class="filled-button">채팅방 바로가기</button>
+										</fieldset>
+									<!-- </a> -->
+								</a>
+								</div>
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						Copyright &copy; Ourd Corp. All Right Reserved. <a rel="nofollow noopener" href="http://localhost:9091/login" target="_blank"></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional Scripts -->
+    <script src="../assets/js/custom.js"></script>
+    <script src="../assets/js/owl.js"></script>
+    <script src="../assets/js/slick.js"></script>
+    <script src="../assets/js/accordions.js"></script>
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+  </body>
+</html>

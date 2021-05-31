@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="tipBoard/fragments/header :: main-head"> </head>
+	<body th:replace="tipBoard/fragments/body :: main-body"> </body>
+<style>
+
+#wr {
+	background-color: #a4c639;
+	border-color: #a4c639;
+	width: 70px;
+	height: 40px;
+	font-family: "G마켓 산스 TTF";
+	font-size: 13px;
+	padding-top: 10px;
+}
+
+#mainSearchKeyword{
+	height: 40px;
+}
+
+#downb {
+	height: 40px;
+	width: 50px;
+}
+
+#adv-search{
+	width: 500px;
+	margin-left: 700px;
+}
+
+#titlec {
+	color: #a4c639;
+}
+
+#sbb {
+	background-color: #a4c639;
+	border-color: #a4c639;
+	width: 50px;
+}
+
+#type {
+	font-size: 15px;
+	font-family: "G마켓 산스 TTF";
+}
+
+#pb {
+	margin-left: 750px;
+	 
+}
+
+
+#b1 {
+	background-color: #a4c639;
+}
+
+#table {
+	width: 80%;
+	margin-left: 10%;
+}
+</style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="TemplateMo">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+	rel="stylesheet">
+
+<title>Ourd Business - Services</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="../assets/css/fontawesome.css">
+<link rel="stylesheet" href="../assets/css/templatemo-finance-business.css">
+<link rel="stylesheet" href="../assets/css/owl.css">
+<!--
+
+Finance Business TemplateMo
+
+https://templatemo.com/tm-545-finance-business
+
+-->
+</head>
+
+<body>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="preloader">
+		<div class="jumper">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- ***** Preloader End ***** -->
+
+	<!-- Header -->
+
+	   <header class="">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand" href="/home"><h2>OURD
+						Business</h2></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="/home">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/login">Sign Up</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/list.do">Board
+								</a></li>
+							<li class="nav-item"><a class="nav-link" href="/chat/room" 
+                  onclick="window.open(this.href, '_blank', 'width=460px,height=420px,left=2000%, top=500px,toolbars=no,scrollbars=no'); return false;">
+                        Chat</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- Page Content -->
+	<div class="page-heading header-text">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>>TIP BOARD</h1>
+					<span>WITH. OURD</span>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <br>
+    	<th:block layout:fragment="title">
+		<title>this is list page</title>
+	</th:block>
+
+	<th:block layout:fragment="search">
+		<div th:replace="tipBoard/fragments/common :: search" ></div>
+	</th:block>
+<br>
+	<th:block layout:fragment="content">
+		<div class="table-responsive clearfix" id="table">
+			<table class="table table-hover" id="type">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${not #lists.isEmpty( boardList )}" th:each="row : ${boardList}">
+						<td scope="row" th:text="${#strings.equals( row.noticeYn, 'Y' ) ? '공지' : row.idx}"></td>
+						<td class="text-left">
+							<a th:href="|@{/tipBoard/view.do}${params.makeQueryString(params.currentPageNo)}&idx=${row.idx}|" th:text="${row.title}" id="titlec"></a>
+						</td>
+						<td th:text="${row.writer}"></td>
+						<td th:text="${#temporals.format( row.insertTime, 'yyyy-MM-dd' )}"></td>
+					</tr>
+					<tr th:unless="${not #lists.isEmpty( boardList )}">
+						<td colspan="5">조회된 결과가 없습니다.</td>
+					</tr>
+				</tbody>
+			</table>
+
+   <div class="btn_wrap text-right">
+         <p th:if="${nickname != null}">
+            <a th:href="@{/tipBoard/write.do}" class="btn btn-primary waves-effect waves-light">Write</a>
+         </p>
+         <p th:if="${nickname == null}">
+            <a th:href="dd" class="btn btn-primary waves-effect waves-light">Write</a>
+         </p>
+         </div>
+
+			<th:block layout:fragment="paging">
+				<nav th:replace="board/fragments/common :: pagination"></nav>
+			</th:block>
+		</div>
+	</th:block>
+
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+// 여긴데 사실 오류는 안떠서 
+			function movePage(uri, queryString) {
+				location.href = uri + queryString;
+			}
+
+			function searchBoard(form) {
+				/*[- 드롭다운이 아닌 메인 검색 키워드로 검색했을 때 -]*/
+				if (isEmpty(form) == true) {
+					var searchKeyword = document.getElementById("mainSearchKeyword");
+					if (isEmpty(searchKeyword.value) == true) {
+						alert("키워드를 입력해 주세요.");
+						searchKeyword.focus();
+						return false;
+					}
+
+					form = document.getElementById("searchForm");
+					form.searchKeyword.value = searchKeyword.value;
+					form.submit();
+				}
+
+				if (isEmpty(form.searchKeyword.value) == true) {
+					alert("키워드를 입력해 주세요.");
+					form.searchKeyword.focus();
+					return false;
+				}
+			}
+			/*[- end of function -]*/
+
+			/*]]>*/
+		</script>
+	</th:block>
+<br>
+    
+    
+
+
+	<!-- Footer Starts Here -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 footer-item">
+					<h4>OurD 소개</h4>
+					<p><strong>Our Dream</strong>
+					<br>
+						우리들의 꿈이 이루어지는  <br>
+						그날까지 함께하겠습니다. <br>
+						We will be together until our dreams come true.<br>
+						ABOUT OurD</p>
+						<!-- 
+					<ul class="social-icons">
+						<li><a rel="nofollow" href="https://fb.com/templatemo"
+							target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-behance"></i></a></li>
+					</ul>
+					 -->
+				</div>
+				<div class="col-md-3 footer-item">
+					<h4>고객 센터</h4> 
+						<p>
+						(주)Our Dream | 서울 강남구 테헤란로 <br>
+						고객센터 전화문의 | 010-0000-0000 <br>
+						FAX | 02-0000-0000  <br>
+						E-mail ourD@naver.com <br>
+						</p>
+				</div>
+				<div class="col-md-3 footer-item">
+					<h4>Additional Pages</h4>
+					<ul class="menu-list">
+						<li><a href="#">About Us 회사소개 바로가기</a></li>
+						<li><a href="#">포트폴리오 등록하는 곳 바로가기</a></li>
+						<li><a href="#">팁 게시판 바로가기</a></li>
+						<li><a href="#">~ 바로가기</a></li>
+						<li><a href="#">~ 바로가기</a></li>
+					</ul>
+				</div>
+
+
+				<!-- 채팅방 자바스크립트 -->
+				
+				<script type="text/javascript">
+					$(function(){
+						
+						// 채팅방 바로가기
+						/*
+						$("#ChatGo").on('click', function(){
+							console.log('click');
+							window.open("/chat/room","room.html","width=400, height=300");
+						}); 
+						*/
+				</script>
+				
+
+				<div class="col-md-3 footer-item last-item">
+					<h4>채팅방 바로가기</h4>
+					<div class="contact-form">
+
+								<div class="col-lg-12">
+								<a href="/chat/room" onclick="window.open(this.href, '_blank', 'width=460px,height=420px,left=2000%, top=500px,toolbars=no,scrollbars=no'); return false;">
+								<!-- 
+									<a href="/chat/room" target='_blank'> -->
+										<fieldset>
+												<button value="채팅방으로이동" type="submit" id="ChatGo" class="filled-button">채팅방 바로가기</button>
+										</fieldset>
+									<!-- </a> -->
+								</a>
+								</div>
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>
+						Copyright &copy; Ourd Corp. All Right Reserved. <a rel="nofollow noopener" href="http://localhost:9091/login" target="_blank"></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Additional Scripts -->
+	<script src="../assets/js/custom.js"></script>
+	<script src="../assets/js/owl.js"></script>
+	<script src="../assets/js/slick.js"></script>
+	<script src="../assets/js/accordions.js"></script>
+
+
+</body>
+</html>

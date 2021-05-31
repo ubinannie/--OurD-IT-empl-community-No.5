@@ -1,0 +1,76 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.ourd'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+	implementation 'org.springframework.boot:spring-boot-starter-mustache'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	//WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.webjars:sockjs-client:1.1.2'
+    implementation 'org.webjars:stomp-websocket:2.3.3-1'
+    
+	implementation 'org.webjars.bower:bootstrap:4.3.1'
+    implementation 'org.webjars.bower:vue:2.5.16'
+    implementation 'org.webjars.bower:axios:0.17.1'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    //redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'  
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// MYSQL
+	runtimeOnly 'mysql:mysql-connector-java'
+	// LOMBOK
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+	// SECURITY
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.3'
+	// JPA
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.5'
+
+   // oauth2
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    // templates engine
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.5'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect' /* Thymeleaf Layout */
+  	
+  	compile group: 'commons-io', name: 'commons-io', version: '2.6' /* Apache Commons IO */
+	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.3' /* Apache Commons File Upload */
+  	 
+
+	
+	
+}
+
+test {
+	useJUnitPlatform()
+}
+

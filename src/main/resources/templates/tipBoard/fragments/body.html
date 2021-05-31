@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<body th:fragment="main-body">
+
+		<!-- /.fixed-navbar -->
+
+		<th:block layout:fragment="modal"></th:block>
+
+								<!-- /.box-title -->
+	
+								<th:block layout:fragment="search"></th:block>
+	
+							</div>
+							<!-- //.clearfix -->
+	
+							<th:block layout:fragment="content"></th:block>
+	
+							<th:block layout:fragment="paging"></th:block>
+						</div>
+						<!-- /.box-content -->
+						
+						<th:block layout:fragment="add-content"></th:block>
+
+					</div>
+					<!-- /.col-xs-12 -->
+				</div>
+		
+			</div>
+			<!-- /.main-content -->
+		</div>
+		<!-- /#wrapper -->
+
+		<script th:src="@{/scripts/jquery.min.js}"></script>
+		<script th:src="@{/plugin/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+		<script th:src="@{/plugin/common/moment.js}"></script>
+
+		<script th:src="@{/scripts/main.js}"></script>
+		<script th:src="@{/scripts/common.js}"></script>
+
+		<th:block layout:fragment="script"></th:block>
+	</body>
+</html>

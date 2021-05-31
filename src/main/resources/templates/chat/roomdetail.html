@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Websocket ChatRoom</title>
+    <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/dist/css/bootstrap.min.css">
+    <style>
+      [v-cloak] {
+          display: none;
+      }
+      
+	  body, table, div, p{font-family:'Jeju Gothic', sans-serif;
+	  font-weight:thin; }
+	  /*font-weight는 100(thin), 400(normal), 700(bold)만 사용하세요.*/
+      
+       *{
+			box-sizing:border-box;
+		}
+		body{
+			font-family:Arial;
+
+		}
+		#container{
+			width:750px;
+			height:800px;
+			background:#eff3f7;
+			margin:0 auto;
+			font-size:0;
+			border-radius:5px;
+			overflow:hidden;
+		}
+		aside{
+			width:260px;
+			height:800px;
+
+			display:inline-block;
+			font-size:15px;
+			vertical-align:top;
+		}
+		main{
+			width:490px;
+			height:800px;
+			display:inline-block;
+			font-size:15px;
+			vertical-align:top;
+		}
+		
+		aside header{
+			padding:30px 20px;
+		}
+		aside input{
+			width:100%;
+			height:50px;
+			line-height:50px;
+			padding:0 50px 0 20px;
+		
+			border:none;
+			border-radius:3px;
+			color:#54672A;
+			background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
+			background-repeat:no-repeat;
+			background-position:170px;
+			background-size:40px;
+		}
+		aside input::placeholder{
+			color:#fff;
+		}
+		aside ul{
+			padding-left:0;
+			margin:0;
+			list-style-type:none;
+			overflow-y:scroll;
+			height:50px;
+		}
+		aside li{
+			padding:10px 0;
+		}
+		aside li:hover{
+			background-color:#54672A;
+		}
+		h2,h3{
+			margin:0;
+		}
+		aside li img{
+			border-radius:50%;
+			margin-left:20px;
+			margin-right:8px;
+		}
+		aside li div{
+			display:inline-block;
+			vertical-align:top;
+			margin-top:12px;
+		}
+		aside li h2{
+			font-size:14px;
+			color:#fff;
+			font-weight:normal;
+			margin-bottom:5px;
+		}
+		aside li h3{
+			font-size:12px;
+		
+			font-weight:normal;
+		}
+		
+		.status{
+			width:10px;
+			height:8px;
+			display:none;
+
+		}
+		.green{
+			background-color: #E8FFFF;
+		}
+		.orange{
+			background-color: #E8FFFF;
+		}
+		.blue{
+			background-color:#7CA6DE;
+			margin-right:0;
+			margin-left:7px;
+		}
+		
+		.row{
+			height:10px;
+			margin-bottom:20px;
+			padding:30px 0px 30px 0px;
+			font-size:23px;
+		}
+
+		.list-group{
+			padding-left:0;
+			margin:0;
+			list-style-type:none;
+			overflow-y:scroll;
+			height:280px;
+			border-top:2px solid balck;
+			border-left:2px solid balck;
+			border-right:2px solid balck;
+			border-bottom:2px solid balck;
+		}
+		
+		.list-group ul{
+			list-style-type:none;
+			overflow-y:scroll;
+			height:280px;
+			border:2px solid balck;
+		}
+		
+
+		.list-group h2{
+			display:inline-block;
+			font-size:4px;
+			font-weight:normal;
+		}
+
+		.list-group .entete{
+			margin-bottom:4px;
+			margin-top:7px;
+			font-size:7px;
+		}
+		.list-group .message{
+			font-size:12px;
+			font-weight:6px;
+			padding:5px;
+			line-height:25px;
+			max-width:90%;
+			display:inline-block;
+			text-align:left;
+			border-radius:20px;
+		}
+		.list-group .me{
+			text-align:right;
+		}
+		.list-group #you .message{
+			background-color:#EEE;
+		}
+		.list-group .me .message{
+			background-color:#7CA6DE;
+		}
+		.list-group .me .triangle{
+			border-color: transparent transparent #7CA6DE transparent;
+			margin-left:375px;
+		}
+		
+		main footer{
+			height:155px;
+			padding:20px 30px 10px 20px;
+		}
+		main footer textarea{
+			resize:none;
+			border:none;
+			display:block;
+			width:100%;
+			height:80px;
+			border-radius:3px;
+			padding:20px;
+			font-size:13px;
+			margin-bottom:13px;
+		}
+		main footer textarea::placeholder{
+			color:#ddd;
+		}
+		main footer a{
+			text-decoration:none;
+			text-transform:uppercase;
+			font-weight:bold;
+			color:#7CA6DE;
+			vertical-align:top;
+			margin-left:333px;
+			margin-top:5px;
+			display:inline-block;
+		}
+	
+		.btn1{
+			color:#000000;
+			margin-left:30px;
+			width:50px;
+			padding:3px;
+			font-size:20px;
+			line-height:25px;
+			max-width:80%;
+			display:inline-block;
+			text-align:center;
+			background-color:#EEE;
+			border-radius:20px;
+		}
+		.btn2{
+			color:#000000;
+			padding:5px;
+			line-height:25px;
+			max-width:100%;
+			display:inline-block;
+			text-align:left;
+			background-color:#EEE;
+		}
+		
+		.btn3{
+			color:#737373;
+			width:100px;
+			margin-left:5px;
+			font-size:15px;
+			margin-bottom: 20px;
+		}
+		.input-group{
+			color:balck;
+		}
+		.input-group-append{
+			color:balck;
+		}
+    </style>
+  </head>
+  <body>
+
+    <div class="container" id="app" v-cloak>
+    	<!-- 해더 : 방이름이랑 / 몇명 들어와있는지 띄워주는 부분 -->
+    	<input type="hidden" id="sessionId" value="${sender}">
+		<input type="hidden" id="roomNumber" value="${roomName}">
+    	
+        <div class="row">
+            <div class="col-md-6">
+                <h4>{{roomName}}<span class="btn1">{{userCount}}명</span>
+                	<a class="btn3" href="/chat/room">돌아가기</a></h4>
+            </div>
+        </div>
+        
+        <div class="input-group" id="chating">
+        </div>
+	        <!-- 메세지 띄워지는 부분 : 왼쪽 부분 (자기자신) -->
+	        <ul class="list-group">
+		        <li class="list-group-item" v-for="message in messages.slice().reverse()" id="you" style="border: none;">
+		        	<div class="triangle"></div>
+					<div class="message" >
+						<strong>{{message.message}}</strong>
+					</div>
+						<div class="entete" id="yourName">
+							<span class="status green" name="userName" id="userName"></span>
+								<h2 style="font-size:13px;"><strong>{{message.sender}}</strong></h2>
+									<script type="text/javascript">
+										var now = new Date();
+										var hour = now.getHours();
+										var minute=now.getMinutes();
+										document.write(hour+"시 "+minute+"분 ")
+									</script>
+						</div>
+						
+				</li>
+			</ul> 
+		 
+
+        <footer>
+        <div class="input-group">
+        <!-- @click="sendMessage('TALK')" -->
+			<input placeholder="Type your message" class="form-control" v-model="message" v-on:keypress.enter="sendMessage('TALK')">
+			<br>
+			<div class="input-group-append">
+			<a class="btn2" href="#" @click="sendMessage('TALK')" onclick="send()">전송</a>
+			</div>
+		</div>
+
+		</footer>
+    </div>
+
+    
+    <!-- JavaScript -->
+    <script src="/webjars/vue/2.5.16/dist/vue.min.js"></script>
+    <script src="/webjars/axios/0.17.1/dist/axios.min.js"></script>
+    <script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
+    <script>
+        // websocket & stomp initialize
+        var sock = new SockJS("/ws-stomp");
+        var ws = Stomp.over(sock);
+        // vue.js
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                roomId: '',
+                roomName: '',
+                message: '',
+                messages: [],
+                token: '',
+                userCount: 0
+            },
+            // created() : 지정된 프로토 타입 및 객체 및 속성을 갖는 새로운 객체를 생성하는 함수
+            created() {
+            	// localStorage.getItem : 키로부터 데이터 읽기
+                this.roomId = localStorage.getItem('wschat.roomId');
+                this.roomName = localStorage.getItem('wschat.roomName');
+                var _this = this;
+                // axios.get() : 함수안에 있는걸 가져와줘
+                // 가져왔으면 
+                // 사용자 정보 가져오기
+                // 여기는 방에 입장하자마자 띄워지는 곳 -> 입장 / 퇴장
+                axios.get('/chat/user').then(response => {
+                    _this.token = response.data.token;
+                    ws.connect({"token":_this.token}, function(frame) {
+                    	// ws.subscribe : 구독 <-> publish : 발행
+                    	// 사용자의 방 이름 
+                        ws.subscribe("/sub/chat/room/"+_this.roomId, function(message) {
+                        	// JSON.parse : string객체를 json 객체로 변환
+                            var recv = JSON.parse(message.body);
+                            _this.recvMessage(recv);
+                        });
+                    }, function(error) {
+                        alert("서버 연결에 실패 하였습니다. 다시 접속해 주십시요.");
+                        location.href="/chat/room";
+                    });
+                });
+            },
+            // 여기는 방에서 채팅하는 메시지 띄워주는 곳 
+            methods: {
+                sendMessage: function(type) {
+                	
+  					
+                    ws.send("/pub/chat/message", {"token":this.token}, JSON.stringify({type:type, roomId:this.roomId, message:this.message}));
+                    this.message = '';
+                    var d = new Date();
+                    var dateInfo = data.getHors() + " : " + date.getMuntes() + " : " + date.getSeconds();
+                    
+                },
+                recvMessage: function(recv) {
+                    this.userCount = recv.userCount;
+                    this.messages.unshift({"type":recv.type,"sender":recv.sender,"message":recv.message})
+                    
+                }
+            }
+            
+        });
+    </script>
+  </body>
+</html>
