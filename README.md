@@ -16,4 +16,4 @@
 - 정대현 : 포트폴리오 게시판
 - 신호선 : TIP게시판 / 관리자 게시판 
 - PPT -> ISSUES에 첨부 (채팅 / 알람부분만-me) 
-- 
+- https://github.com/ubinannie/--OurD-IT-empl-community-No.5/issues/1
